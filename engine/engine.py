@@ -1,5 +1,7 @@
 class Engine(object):
 
+    escape_chars = ['_', '%']
+
     def __init__(self, depth=0):
         self.depth = depth
 
@@ -15,5 +17,6 @@ class Engine(object):
         if not isinstance(s, str):
             return s
         s = s.replace('\\', '\\\\')
-        s = s.replace('_', '\\_')
+        for c in cls.escape_chars:
+            s = s.replace(c, '\\' + c)
         return s
