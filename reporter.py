@@ -1,6 +1,7 @@
-from texreporter.engine.engine_factory import EngineFactory
+from .engine.engine_factory import EngineFactory
 
 import datetime
+import pytz
 import subprocess
 import tempfile
 
@@ -19,7 +20,7 @@ class Reporter(object):
         factory = EngineFactory()
         title = data.get('title', 'Report')
         author = data.get('author', 'TexReporter')
-        date = datetime.datetime.today().strftime('%Y-%m-%d %H:%M')
+        date = datetime.datetime.now(pytz.utc).strftime('%Y-%m-%d %H:%M %z')
         date = data.get('date', date)
         factory.create('header').render(fd, {'title': title, 'author': author,
                                              'date': date})

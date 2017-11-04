@@ -5,3 +5,8 @@ Generate pdf file from given dict data. reporter.py shows an example. `python -m
 ## Requirement
 
 xelatex is needed.
+
+```
+apt install texlive-xetex
+apt install cjk-latex latex-cjk-all
+```
